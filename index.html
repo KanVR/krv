@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Ravi Kanumuri — Data Engineer</title>
+<meta name="description" content="Ravi Kanumuri — Data Engineer specializing in PySpark, Databricks, AWS, Snowflake, ETL/ELT, Lakehouse Architecture, and Data Warehousing."/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -19,6 +20,7 @@
     --font-display: 'Syne', sans-serif;
     --font-mono: 'Space Mono', monospace;
   }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
@@ -29,7 +31,6 @@
     cursor: none;
   }
 
-  /* CUSTOM CURSOR */
   .cursor {
     width: 12px; height: 12px;
     background: var(--accent);
@@ -40,6 +41,7 @@
     transition: transform 0.15s ease;
     mix-blend-mode: difference;
   }
+
   .cursor-ring {
     width: 36px; height: 36px;
     border: 1.5px solid var(--accent);
@@ -51,15 +53,15 @@
     opacity: 0.5;
   }
 
-  /* NOISE OVERLAY */
   body::before {
     content: '';
     position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 0; opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
   }
 
-  /* GRID BG */
   body::after {
     content: '';
     position: fixed; inset: 0;
@@ -67,10 +69,10 @@
       linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
     background-size: 60px 60px;
-    pointer-events: none; z-index: 0;
+    pointer-events: none;
+    z-index: 0;
   }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
@@ -80,14 +82,17 @@
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
+
   .nav-logo {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--accent);
     letter-spacing: 0.1em;
   }
+
   .nav-logo span { color: var(--muted); }
   .nav-links { display: flex; gap: 2.5rem; }
+
   .nav-links a {
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -98,26 +103,30 @@
     transition: color 0.2s;
     position: relative;
   }
+
   .nav-links a::after {
     content: '';
     position: absolute; bottom: -4px; left: 0; right: 0;
     height: 1px; background: var(--accent);
-    transform: scaleX(0); transition: transform 0.2s;
+    transform: scaleX(0);
+    transition: transform 0.2s;
   }
+
   .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover::after { transform: scaleX(1); }
 
-  /* SECTIONS */
   section { position: relative; z-index: 1; }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
-    display: flex; flex-direction: column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     padding: 8rem 4rem 4rem;
-    position: relative; overflow: hidden;
+    position: relative;
+    overflow: hidden;
   }
+
   .hero-tag {
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -127,14 +136,19 @@
     margin-bottom: 1.5rem;
     opacity: 0;
     animation: fadeUp 0.6s ease 0.2s forwards;
-    display: flex; align-items: center; gap: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
+
   .hero-tag::before {
     content: '';
     display: inline-block;
-    width: 32px; height: 1px;
+    width: 32px;
+    height: 1px;
     background: var(--accent);
   }
+
   .hero-name {
     font-size: clamp(3.5rem, 9vw, 8rem);
     font-weight: 800;
@@ -144,7 +158,9 @@
     opacity: 0;
     animation: fadeUp 0.7s ease 0.35s forwards;
   }
+
   .hero-name .last { color: var(--accent); }
+
   .hero-title {
     font-family: var(--font-mono);
     font-size: clamp(0.9rem, 2vw, 1.1rem);
@@ -153,14 +169,17 @@
     opacity: 0;
     animation: fadeUp 0.7s ease 0.5s forwards;
   }
+
   .hero-title .typing::after {
     content: '|';
     color: var(--accent);
     animation: blink 0.8s step-end infinite;
   }
+
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
   .hero-desc {
-    max-width: 560px;
+    max-width: 650px;
     font-size: 1.05rem;
     color: var(--muted);
     line-height: 1.75;
@@ -168,134 +187,179 @@
     opacity: 0;
     animation: fadeUp 0.7s ease 0.65s forwards;
   }
+
   .hero-desc strong { color: var(--text); font-weight: 600; }
+
   .hero-actions {
-    display: flex; gap: 1rem; flex-wrap: wrap;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
     opacity: 0;
     animation: fadeUp 0.7s ease 0.8s forwards;
   }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 0.5rem;
+
+  .btn-primary, .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.85rem 2rem;
-    background: var(--accent);
-    color: #080b0f;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none; cursor: none;
-    transition: all 0.2s;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-  }
-  .btn-primary:hover { background: #00ffb3; transform: translateY(-2px); }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    background: transparent;
-    color: var(--text);
     font-family: var(--font-mono);
     font-size: 0.8rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid var(--border);
     cursor: none;
     transition: all 0.2s;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #080b0f;
+    font-weight: 700;
+    border: none;
+  }
+
+  .btn-primary:hover { background: #00ffb3; transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-  /* HERO STATS */
   .hero-stats {
-    position: absolute; right: 4rem; bottom: 4rem;
-    display: flex; flex-direction: column; gap: 2rem;
+    position: absolute;
+    right: 4rem;
+    bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     opacity: 0;
     animation: fadeIn 1s ease 1.2s forwards;
   }
+
   .stat { text-align: right; }
+
   .stat-num {
-    font-size: 2.5rem; font-weight: 800;
-    color: var(--accent); line-height: 1;
-    font-family: var(--font-mono);
-  }
-  .stat-label {
-    font-size: 0.7rem; color: var(--muted);
-    letter-spacing: 0.1em; text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
     font-family: var(--font-mono);
   }
 
-  /* HERO VISUAL */
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+  }
+
   .hero-visual {
-    position: absolute; right: 4rem; top: 50%;
+    position: absolute;
+    right: 4rem;
+    top: 50%;
     transform: translateY(-50%);
-    width: 380px; height: 380px;
+    width: 380px;
+    height: 380px;
     opacity: 0;
     animation: fadeIn 1s ease 1s forwards;
   }
+
   .orbit {
-    position: absolute; inset: 0;
+    position: absolute;
+    inset: 0;
     border: 1px solid var(--border);
     border-radius: 50%;
     animation: spin 20s linear infinite;
   }
+
   .orbit:nth-child(2) { inset: 30px; animation-duration: 15s; animation-direction: reverse; }
   .orbit:nth-child(3) { inset: 70px; animation-duration: 25s; }
+
   .orbit-dot {
-    position: absolute; width: 8px; height: 8px;
-    background: var(--accent); border-radius: 50%;
-    top: -4px; left: 50%; transform: translateX(-50%);
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
     box-shadow: 0 0 12px var(--accent);
   }
+
   .orbit-dot-2 {
-    position: absolute; width: 6px; height: 6px;
-    background: var(--accent2); border-radius: 50%;
-    bottom: -3px; right: 20%;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--accent2);
+    border-radius: 50%;
+    bottom: -3px;
+    right: 20%;
     box-shadow: 0 0 10px var(--accent2);
   }
+
   .orbit-center {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   .orbit-initials {
-    width: 120px; height: 120px;
+    width: 120px;
+    height: 120px;
     background: var(--bg3);
     border: 2px solid var(--accent);
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem; font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
     color: var(--accent);
     box-shadow: 0 0 40px rgba(0,229,160,0.2), inset 0 0 40px rgba(0,229,160,0.05);
   }
+
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* SCROLLING TICKER */
   .ticker {
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: 0.85rem 0;
     overflow: hidden;
     background: var(--bg2);
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 1;
   }
+
   .ticker-track {
-    display: flex; gap: 0;
-    animation: ticker 22s linear infinite;
+    display: flex;
+    gap: 0;
+    animation: ticker 24s linear infinite;
     white-space: nowrap;
   }
+
   .ticker-item {
-    display: inline-flex; align-items: center; gap: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
     padding: 0 2rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--muted);
     letter-spacing: 0.05em;
   }
+
   .ticker-item span { color: var(--accent); }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-  /* ABOUT */
   .about {
     padding: 7rem 4rem;
     display: grid;
@@ -303,6 +367,7 @@
     gap: 6rem;
     align-items: center;
   }
+
   .section-label {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -310,14 +375,19 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
-    display: flex; align-items: center; gap: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
+
   .section-label::before {
     content: '';
     display: inline-block;
-    width: 24px; height: 1px;
+    width: 24px;
+    height: 1px;
     background: var(--accent);
   }
+
   .section-title {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
@@ -325,72 +395,122 @@
     letter-spacing: -0.02em;
     margin-bottom: 1.5rem;
   }
-  .section-title em { color: var(--accent); font-style: normal; }
+
+  .section-title em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
   .about-text {
     color: var(--muted);
     line-height: 1.8;
     font-size: 1rem;
     margin-bottom: 1.25rem;
   }
+
   .about-text strong { color: var(--text); }
-  .about-right { display: flex; flex-direction: column; gap: 1rem; }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .info-card {
     background: var(--bg2);
     border: 1px solid var(--border);
     padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     transition: border-color 0.2s, transform 0.2s;
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   }
+
   .info-card:hover { border-color: var(--accent); transform: translateX(6px); }
+
   .info-icon {
-    width: 40px; height: 40px;
+    width: 40px;
+    height: 40px;
     background: rgba(0,229,160,0.08);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
     border: 1px solid var(--border);
   }
-  .info-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 0.2rem; letter-spacing: 0.1em; }
-  .info-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
 
-  /* SKILLS */
+  .info-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .info-val {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
   .skills-section {
     padding: 7rem 4rem;
     background: var(--bg2);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
+
   .skills-header { text-align: center; margin-bottom: 4rem; }
+
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
   }
+
   .skill-group {
     background: var(--bg);
     border: 1px solid var(--border);
     padding: 1.75rem;
     transition: border-color 0.2s, transform 0.2s;
-    position: relative; overflow: hidden;
+    position: relative;
+    overflow: hidden;
     clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
   }
+
   .skill-group::before {
     content: '';
-    position: absolute; top: 0; left: 0; right: 0;
+    position: absolute;
+    top: 0; left: 0; right: 0;
     height: 2px;
     background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0; transition: opacity 0.2s;
+    opacity: 0;
+    transition: opacity 0.2s;
   }
+
   .skill-group:hover { border-color: rgba(0,229,160,0.4); transform: translateY(-4px); }
   .skill-group:hover::before { opacity: 1; }
+
   .skill-group-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+
   .skill-group-title {
-    font-size: 0.8rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
     font-family: var(--font-mono);
   }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
   .skill-tag {
     padding: 0.3rem 0.75rem;
     background: rgba(0,229,160,0.06);
@@ -401,29 +521,36 @@
     letter-spacing: 0.05em;
   }
 
-  /* EXPERIENCE */
   .experience-section { padding: 7rem 4rem; }
   .experience-header { margin-bottom: 4rem; }
   .timeline { position: relative; }
+
   .timeline::before {
     content: '';
-    position: absolute; left: 0; top: 0; bottom: 0;
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
     width: 1px;
     background: linear-gradient(to bottom, var(--accent), transparent);
   }
+
   .timeline-item {
     padding-left: 2.5rem;
     padding-bottom: 3.5rem;
     position: relative;
   }
+
   .timeline-item::before {
     content: '';
-    position: absolute; left: -4px; top: 6px;
-    width: 9px; height: 9px;
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
     background: var(--accent);
     border-radius: 50%;
     box-shadow: 0 0 12px var(--accent);
   }
+
   .timeline-period {
     font-family: var(--font-mono);
     font-size: 0.7rem;
@@ -431,18 +558,27 @@
     letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
   }
+
   .timeline-role {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 0.25rem;
   }
+
   .timeline-company {
     font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--muted);
     margin-bottom: 1rem;
   }
-  .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   .timeline-bullets li {
     font-size: 0.9rem;
     color: var(--muted);
@@ -450,42 +586,44 @@
     padding-left: 1.25rem;
     position: relative;
   }
+
   .timeline-bullets li::before {
     content: '▸';
-    position: absolute; left: 0;
+    position: absolute;
+    left: 0;
     color: var(--accent);
     font-size: 0.7rem;
     top: 3px;
   }
 
-  /* PROJECTS */
   .projects-section {
     padding: 7rem 4rem;
     background: var(--bg2);
     border-top: 1px solid var(--border);
   }
+
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
     margin-top: 4rem;
   }
+
   .project-card {
     background: var(--bg);
     border: 1px solid var(--border);
     padding: 2rem;
-    position: relative; overflow: hidden;
+    position: relative;
+    overflow: hidden;
     transition: border-color 0.2s, transform 0.2s;
     clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
   }
-  .project-card::after {
-    content: '';
-    position: absolute; top: 0; right: 0;
-    width: 60px; height: 60px;
-    background: radial-gradient(circle at top right, rgba(0,229,160,0.08), transparent 70%);
-    transition: opacity 0.2s;
+
+  .project-card:hover {
+    border-color: rgba(0,229,160,0.5);
+    transform: translateY(-5px);
   }
-  .project-card:hover { border-color: rgba(0,229,160,0.5); transform: translateY(-5px); }
+
   .project-num {
     font-family: var(--font-mono);
     font-size: 0.65rem;
@@ -494,19 +632,27 @@
     margin-bottom: 1rem;
     opacity: 0.6;
   }
+
   .project-title {
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
     line-height: 1.3;
   }
+
   .project-desc {
     font-size: 0.875rem;
     color: var(--muted);
     line-height: 1.7;
     margin-bottom: 1.25rem;
   }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
   .project-tag {
     padding: 0.2rem 0.6rem;
     font-family: var(--font-mono);
@@ -517,43 +663,57 @@
     letter-spacing: 0.05em;
   }
 
-  /* CERTS */
   .certs-section { padding: 7rem 4rem; }
+
   .certs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1rem;
     margin-top: 4rem;
   }
+
   .cert-card {
     background: var(--bg2);
     border: 1px solid var(--border);
     padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     transition: border-color 0.2s;
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   }
+
   .cert-card:hover { border-color: var(--accent3); }
   .cert-icon { font-size: 1.5rem; flex-shrink: 0; }
   .cert-name { font-size: 0.85rem; font-weight: 600; line-height: 1.3; }
-  .cert-issuer { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent3); letter-spacing: 0.05em; margin-top: 0.2rem; }
+  .cert-issuer {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent3);
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+  }
 
-  /* CONTACT */
   .contact-section {
     padding: 7rem 4rem;
     background: var(--bg2);
     border-top: 1px solid var(--border);
     text-align: center;
-    position: relative; overflow: hidden;
+    position: relative;
+    overflow: hidden;
   }
+
   .contact-section::before {
     content: '';
-    position: absolute; top: 50%; left: 50%;
+    position: absolute;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px; height: 600px;
+    width: 600px;
+    height: 600px;
     background: radial-gradient(circle, rgba(0,229,160,0.04) 0%, transparent 70%);
     pointer-events: none;
   }
+
   .contact-email {
     display: inline-block;
     font-size: clamp(1.2rem, 3vw, 2rem);
@@ -567,10 +727,24 @@
     font-family: var(--font-mono);
     letter-spacing: -0.02em;
   }
-  .contact-email:hover { border-color: var(--accent); color: var(--accent); }
-  .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+
+  .contact-email:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
   .social-link {
-    display: flex; align-items: center; gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.6rem 1.25rem;
     background: var(--bg);
     border: 1px solid var(--border);
@@ -583,33 +757,57 @@
     transition: all 0.2s;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
   }
-  .social-link:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* FOOTER */
+  .social-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
   footer {
     padding: 2rem 4rem;
     border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--muted);
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 1;
   }
+
   footer span { color: var(--accent); }
 
-  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(20px); }
+    to { opacity:1; transform: translateY(0); }
+  }
 
-  /* SCROLL REVEAL */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @keyframes fadeIn {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @media (max-width: 900px) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.25rem; }
+    .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a { font-size: 0.65rem; }
     .hero { padding: 7rem 1.5rem 4rem; }
     .hero-visual { display: none; }
-    .hero-stats { position: static; flex-direction: row; gap: 2rem; margin-top: 3rem; }
+    .hero-stats { position: static; flex-direction: row; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
     .stat { text-align: left; }
     .about { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
     .skills-section, .experience-section, .projects-section, .certs-section, .contact-section { padding: 4rem 1.5rem; }
@@ -622,7 +820,6 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo"><span>~/</span>ravi.kanumuri</div>
   <div class="nav-links">
@@ -630,17 +827,17 @@
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
+    <a href="#certs">Certs</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-tag">Available for OPT · H1B Sponsorship Welcome</div>
+  <div class="hero-tag">Data Engineer · OPT Eligible · H1B Sponsorship Welcome</div>
   <h1 class="hero-name">Ravi<br><span class="last">Kanumuri</span></h1>
-  <p class="hero-title"><span class="typing">Data Engineer · MS Computer Science · 4.0 GPA</span></p>
+  <p class="hero-title"><span class="typing">Data Engineer</span></p>
   <p class="hero-desc">
-    Building <strong>high-performance data pipelines</strong> and <strong>cloud-native architectures</strong> that turn raw data into business intelligence. From Medallion pipelines on Databricks to AI-driven maritime cybersecurity research — I engineer systems that scale.
+    I build <strong>cloud-native data pipelines</strong>, <strong>Lakehouse architectures</strong>, and <strong>analytics-ready datasets</strong> using PySpark, Databricks, AWS, Snowflake, and SQL. My work connects large-scale data processing with business intelligence, data quality, and reliable reporting.
   </p>
   <div class="hero-actions">
     <a href="#contact" class="btn-primary">&#9658; Get in touch</a>
@@ -649,16 +846,16 @@
 
   <div class="hero-stats">
     <div class="stat">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10M+</div>
+      <div class="stat-label">Records Processed Daily</div>
+    </div>
+    <div class="stat">
       <div class="stat-num">4.0</div>
-      <div class="stat-label">GPA · M.S. CS</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">2+</div>
-      <div class="stat-label">Years exp</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">6</div>
-      <div class="stat-label">Certifications</div>
+      <div class="stat-label">M.S. GPA</div>
     </div>
   </div>
 
@@ -672,85 +869,92 @@
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item"><span>▸</span> Python</span>
+    <span class="ticker-item"><span>▸</span> SQL</span>
     <span class="ticker-item"><span>▸</span> PySpark</span>
     <span class="ticker-item"><span>▸</span> Databricks</span>
+    <span class="ticker-item"><span>▸</span> Snowflake</span>
     <span class="ticker-item"><span>▸</span> AWS S3</span>
     <span class="ticker-item"><span>▸</span> Delta Lake</span>
     <span class="ticker-item"><span>▸</span> ETL / ELT</span>
-    <span class="ticker-item"><span>▸</span> SQL</span>
-    <span class="ticker-item"><span>▸</span> REST APIs</span>
-    <span class="ticker-item"><span>▸</span> .NET / C#</span>
-    <span class="ticker-item"><span>▸</span> ReactJS</span>
+    <span class="ticker-item"><span>▸</span> Data Warehousing</span>
+    <span class="ticker-item"><span>▸</span> Medallion Architecture</span>
+    <span class="ticker-item"><span>▸</span> Data Quality</span>
+    <span class="ticker-item"><span>▸</span> Bash / Unix</span>
     <span class="ticker-item"><span>▸</span> CI/CD</span>
     <span class="ticker-item"><span>▸</span> Agile</span>
-    <span class="ticker-item"><span>▸</span> Azure DevOps</span>
-    <span class="ticker-item"><span>▸</span> Medallion Architecture</span>
-    <span class="ticker-item"><span>▸</span> Cybersecurity</span>
+
     <span class="ticker-item"><span>▸</span> Python</span>
+    <span class="ticker-item"><span>▸</span> SQL</span>
     <span class="ticker-item"><span>▸</span> PySpark</span>
     <span class="ticker-item"><span>▸</span> Databricks</span>
+    <span class="ticker-item"><span>▸</span> Snowflake</span>
     <span class="ticker-item"><span>▸</span> AWS S3</span>
     <span class="ticker-item"><span>▸</span> Delta Lake</span>
     <span class="ticker-item"><span>▸</span> ETL / ELT</span>
-    <span class="ticker-item"><span>▸</span> SQL</span>
-    <span class="ticker-item"><span>▸</span> REST APIs</span>
-    <span class="ticker-item"><span>▸</span> .NET / C#</span>
-    <span class="ticker-item"><span>▸</span> ReactJS</span>
+    <span class="ticker-item"><span>▸</span> Data Warehousing</span>
+    <span class="ticker-item"><span>▸</span> Medallion Architecture</span>
+    <span class="ticker-item"><span>▸</span> Data Quality</span>
+    <span class="ticker-item"><span>▸</span> Bash / Unix</span>
     <span class="ticker-item"><span>▸</span> CI/CD</span>
     <span class="ticker-item"><span>▸</span> Agile</span>
-    <span class="ticker-item"><span>▸</span> Azure DevOps</span>
-    <span class="ticker-item"><span>▸</span> Medallion Architecture</span>
-    <span class="ticker-item"><span>▸</span> Cybersecurity</span>
   </div>
 </div>
 
-<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-left reveal">
     <div class="section-label">About me</div>
-    <h2 class="section-title">Engineer by <em>craft</em>,<br>researcher by <em>instinct</em></h2>
-    <p class="about-text">I'm a <strong>data engineer and software developer</strong> currently completing my M.S. in Computer Science at UNC Wilmington with a perfect 4.0 GPA. My work spans building scalable cloud data pipelines, enterprise backend systems, and cutting-edge AI/ML research in maritime cybersecurity.</p>
-    <p class="about-text">At IBM, I built and maintained <strong>.NET enterprise systems</strong> for international banking clients. Now I'm engineering <strong>Medallion data architectures</strong> on Databricks and AWS, and conducting published research on AI-driven anomaly detection in maritime cyber-physical systems.</p>
-    <p class="about-text">I'm actively seeking <strong> entry-level positions in Software Engineering, Data Engineering, Cloud Infrastructure, or Cybersecurity.</strong> where I can bring my pipeline-building, cloud, and analytical skills to a team that values growth and innovation.</p>
+    <h2 class="section-title">Data engineer by <em>craft</em>,<br>researcher by <em>instinct</em></h2>
+    <p class="about-text">
+      I am a <strong>Data Engineer with 4+ years of experience</strong> designing cloud-native ETL pipelines, Lakehouse architectures, and analytics-ready datasets using Databricks, PySpark, AWS, Snowflake, and SQL.
+    </p>
+    <p class="about-text">
+      My recent work focuses on <strong>large-scale data processing</strong>, including PySpark ETL pipelines, Databricks Bronze/Silver/Gold layers, AWS S3 ingestion, Snowflake data modeling, data warehousing, and data quality validation.
+    </p>
+    <p class="about-text">
+      I also hold an <strong>M.S. in Computer Science and Information Systems from UNC Wilmington</strong>, where my research focused on AI-driven anomaly detection and cybersecurity for maritime cyber-physical systems.
+    </p>
+    <p class="about-text">
+      I am actively seeking <strong>Data Engineer, Associate Data Engineer, Databricks Engineer, Snowflake Developer, and Cloud Data Engineer roles</strong>.
+    </p>
   </div>
+
   <div class="about-right reveal">
+    <div class="info-card">
+      <div class="info-icon">💼</div>
+      <div>
+        <div class="info-label">Current Focus</div>
+        <div class="info-val">Data Engineering · Databricks · Snowflake</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">☁️</div>
+      <div>
+        <div class="info-label">Cloud</div>
+        <div class="info-val">AWS S3 · IAM · Boto3 · Cloud Data Platforms</div>
+      </div>
+    </div>
     <div class="info-card">
       <div class="info-icon">🎓</div>
       <div>
         <div class="info-label">Education</div>
-        <div class="info-val">M.S. Computer Science · UNCW · 4.0 GPA</div>
+        <div class="info-val">M.S. CSIS · UNCW · 4.0 GPA</div>
       </div>
     </div>
     <div class="info-card">
       <div class="info-icon">📍</div>
       <div>
         <div class="info-label">Location</div>
-        <div class="info-val">Indian Land, SC · Open to Remote</div>
+        <div class="info-val">Indian Land, SC · Open to Remote / Hybrid</div>
       </div>
     </div>
     <div class="info-card">
       <div class="info-icon">✈️</div>
       <div>
-        <div class="info-label">Visa Status</div>
-        <div class="info-val">OPT · H1B Sponsorship Welcome</div>
-      </div>
-    </div>
-    <div class="info-card">
-      <div class="info-icon">🔬</div>
-      <div>
-        <div class="info-label">Research</div>
-        <div class="info-val">ICCWS Published · Maritime Cybersecurity</div>
-      </div>
-    </div>
-    <div class="info-card">
-      <div class="info-icon">💼</div>
-      <div>
-        <div class="info-label">Previous</div>
-        <div class="info-val">Associate System Engineer · IBM</div>
+        <div class="info-label">Work Authorization</div>
+        <div class="info-val">OPT Eligible · H1B Sponsorship Welcome</div>
       </div>
     </div>
     <div class="info-card">
@@ -763,197 +967,249 @@
   </div>
 </section>
 
-<!-- SKILLS -->
 <section class="skills-section" id="skills">
   <div class="skills-header reveal">
     <div class="section-label" style="justify-content:center">Tech stack</div>
     <h2 class="section-title" style="text-align:center">What I <em>build with</em></h2>
   </div>
+
   <div class="skills-grid">
     <div class="skill-group reveal">
+      <div class="skill-group-icon">🏗️</div>
+      <div class="skill-group-title">Data Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag">ETL / ELT</span>
+        <span class="skill-tag">Data Pipelines</span>
+        <span class="skill-tag">Data Warehousing</span>
+        <span class="skill-tag">Data Modeling</span>
+        <span class="skill-tag">Data Quality</span>
+        <span class="skill-tag">Data Validation</span>
+        <span class="skill-tag">Batch Processing</span>
+        <span class="skill-tag">Data Integration</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-icon">☁️</div>
+      <div class="skill-group-title">Cloud & Platforms</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS S3</span>
+        <span class="skill-tag">AWS IAM</span>
+        <span class="skill-tag">EC2</span>
+        <span class="skill-tag">Lambda</span>
+        <span class="skill-tag">CloudWatch</span>
+        <span class="skill-tag">Boto3</span>
+        <span class="skill-tag">Databricks</span>
+        <span class="skill-tag">Snowflake</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
       <div class="skill-group-icon">⚡</div>
-      <div class="skill-group-title">Languages</div>
+      <div class="skill-group-title">Big Data</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Apache Spark</span>
+        <span class="skill-tag">PySpark</span>
+        <span class="skill-tag">Spark SQL</span>
+        <span class="skill-tag">Delta Lake</span>
+        <span class="skill-tag">DataFrames</span>
+        <span class="skill-tag">Partitioning</span>
+        <span class="skill-tag">Caching</span>
+        <span class="skill-tag">Query Tuning</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-icon">❄️</div>
+      <div class="skill-group-title">Data Warehousing</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Snowflake</span>
+        <span class="skill-tag">Tables</span>
+        <span class="skill-tag">Views</span>
+        <span class="skill-tag">Virtual Warehouses</span>
+        <span class="skill-tag">RBAC</span>
+        <span class="skill-tag">Dimensional Modeling</span>
+        <span class="skill-tag">BI Reporting</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-icon">💻</div>
+      <div class="skill-group-title">Programming</div>
       <div class="skill-tags">
         <span class="skill-tag">Python</span>
         <span class="skill-tag">SQL</span>
         <span class="skill-tag">Java</span>
-        <span class="skill-tag">C#</span>
-        <span class="skill-tag">.NET</span>
         <span class="skill-tag">PySpark</span>
-        <span class="skill-tag">C / C++</span>
-        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">.NET</span>
       </div>
     </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-icon">☁️</div>
-      <div class="skill-group-title">Cloud & Data</div>
-      <div class="skill-tags">
-        <span class="skill-tag">AWS S3</span>
-        <span class="skill-tag">Boto3</span>
-        <span class="skill-tag">Databricks</span>
-        <span class="skill-tag">Delta Lake</span>
-        <span class="skill-tag">Spark SQL</span>
-        <span class="skill-tag">IAM</span>
-        <span class="skill-tag">Medallion Arch</span>
-      </div>
-    </div>
+
     <div class="skill-group reveal">
       <div class="skill-group-icon">🔧</div>
-      <div class="skill-group-title">Engineering</div>
+      <div class="skill-group-title">Tools & Practices</div>
       <div class="skill-tags">
-        <span class="skill-tag">ETL / ELT</span>
-        <span class="skill-tag">REST APIs</span>
-        <span class="skill-tag">CI/CD</span>
-        <span class="skill-tag">Azure DevOps</span>
         <span class="skill-tag">Git</span>
+        <span class="skill-tag">Azure DevOps</span>
+        <span class="skill-tag">CI/CD</span>
         <span class="skill-tag">Agile</span>
-        <span class="skill-tag">OOP Design</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-icon">🤖</div>
-      <div class="skill-group-title">AI / ML & Research</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Anomaly Detection</span>
-        <span class="skill-tag">Weka</span>
-        <span class="skill-tag">Predictive Modeling</span>
-        <span class="skill-tag">Cybersecurity</span>
-        <span class="skill-tag">Threat Modeling</span>
-        <span class="skill-tag">NMEA 2000</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-icon">🖥️</div>
-      <div class="skill-group-title">Frontend</div>
-      <div class="skill-tags">
-        <span class="skill-tag">ReactJS</span>
-        <span class="skill-tag">Tailwind CSS</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">REST Integration</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-icon">📊</div>
-      <div class="skill-group-title">Data Processing</div>
-      <div class="skill-tags">
-        <span class="skill-tag">DataFrames</span>
-        <span class="skill-tag">Schema Enforcement</span>
-        <span class="skill-tag">Data Cleansing</span>
-        <span class="skill-tag">Aggregations</span>
-        <span class="skill-tag">Batch Processing</span>
-        <span class="skill-tag">ACID Transactions</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Unix</span>
+        <span class="skill-tag">Bash</span>
+        <span class="skill-tag">Jupyter</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section class="experience-section" id="experience">
   <div class="experience-header reveal">
     <div class="section-label">Career</div>
     <h2 class="section-title">Where I've <em>worked</em></h2>
   </div>
+
   <div class="timeline">
     <div class="timeline-item reveal">
-      <div class="timeline-period">Jan 2024 – Present</div>
-      <div class="timeline-role">M.S. Researcher & Teaching Assistant</div>
-      <div class="timeline-company">University of North Carolina at Wilmington · Wilmington, NC</div>
+      <div class="timeline-period">May 2022 – Dec 2024</div>
+      <div class="timeline-role">Data Engineer</div>
+      <div class="timeline-company">Luminaire Technologies Limited · Bangalore, India</div>
       <ul class="timeline-bullets">
-        <li>Published AI-driven maritime cybersecurity research (VessiGuard) accepted at ICCWS — built anomaly detection models for NMEA 2000 vessel networks.</li>
-        <li>Led practical labs on malware analysis, security tools, and cyber operations for 50+ graduate students.</li>
-        <li>Converted R-based MBA analytics curriculum to Python, developing Jupyter Notebooks adopted across multiple graduate courses.</li>
-        <li>Instructed maritime OT cybersecurity hackathon for 20+ participants at UNCW Center for Marine Science.</li>
+        <li>Developed PySpark-based ETL pipelines processing 10M+ records daily from AWS S3 into Databricks Delta Lake environments.</li>
+        <li>Built Databricks workflows implementing Bronze, Silver, and Gold data layers for Lakehouse architecture.</li>
+        <li>Designed Snowflake analytical data models using tables, views, virtual warehouses, and role-based access controls.</li>
+        <li>Automated AWS S3 ingestion workflows and operational tasks using Python and Boto3.</li>
+        <li>Implemented schema validation, data quality checks, and reconciliation frameworks across ETL workflows.</li>
+        <li>Reduced Spark job execution time by 40% through partitioning strategies, caching, and query optimization.</li>
+        <li>Delivered analytics-ready datasets that reduced manual reporting effort and improved data availability for stakeholders.</li>
       </ul>
     </div>
+
     <div class="timeline-item reveal">
       <div class="timeline-period">Apr 2021 – May 2022</div>
       <div class="timeline-role">Associate System Engineer</div>
       <div class="timeline-company">IBM · Gurgaon, India</div>
       <ul class="timeline-bullets">
-        <li>Built and maintained C#/.NET modules for enterprise-scale banking systems across the full software development lifecycle.</li>
-        <li>Engineered REST-based service integrations with relational databases supporting critical international banking workflows.</li>
-        <li>Resolved high-priority production incidents under strict SLAs, minimizing system downtime and improving reliability metrics.</li>
-        <li>Collaborated with international clients through Agile sprints — requirements, QA, and controlled deployments.</li>
+        <li>Developed and maintained enterprise banking applications using .NET and SQL Server.</li>
+        <li>Designed REST-based services integrated with relational databases for enterprise banking workflows.</li>
+        <li>Built SQL-based validation and reconciliation processes supporting banking operations.</li>
+        <li>Resolved 20+ high-priority production incidents while maintaining SLA compliance and minimizing business disruption.</li>
+        <li>Collaborated with QA, business analysts, and client teams during Agile release cycles.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-period">Jul 2020 – Apr 2021</div>
+      <div class="timeline-role">Software Engineer</div>
+      <div class="timeline-company">Exner Technologies · Hyderabad, India</div>
+      <ul class="timeline-bullets">
+        <li>Developed Java-based backend modules supporting enterprise business applications.</li>
+        <li>Built SQL-based data extraction and transformation workflows for business reporting.</li>
+        <li>Optimized SQL queries and stored procedures to improve application and reporting performance.</li>
+        <li>Implemented REST API integrations between application services and relational databases.</li>
+        <li>Created technical documentation for data flows, APIs, and database structures.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-period">Aug 2019 – Jul 2020</div>
+      <div class="timeline-role">Software Engineer Intern</div>
+      <div class="timeline-company">Exner Technologies · Hyderabad, India</div>
+      <ul class="timeline-bullets">
+        <li>Assisted in developing and testing enterprise applications using Java and SQL.</li>
+        <li>Created SQL queries and stored procedures supporting reporting and operational workflows.</li>
+        <li>Performed data quality checks and validation activities to ensure data accuracy across systems.</li>
+        <li>Developed scripts to automate repetitive operational and reporting tasks.</li>
+        <li>Worked closely with senior developers in Agile-based software development projects.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-period">Jan 2025 – Dec 2025</div>
+      <div class="timeline-role">Graduate Assistant · Research Assistant · Teaching Assistant</div>
+      <div class="timeline-company">University of North Carolina at Wilmington · Wilmington, NC</div>
+      <ul class="timeline-bullets">
+        <li>Developed AI/ML-based anomaly detection models for identifying malicious behavior in maritime cyber-physical systems.</li>
+        <li>Researched cybersecurity vulnerabilities in vessel communication networks including NMEA 2000 environments.</li>
+        <li>Converted R-based business analytics course materials into Python and developed Jupyter Notebooks for graduate coursework.</li>
+        <li>Led practical labs on malware analysis, security tools engineering, and cyber operations.</li>
+        <li>Instructed a maritime OT cybersecurity hackathon for 20+ participants at UNCW Center for Marine Science.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section class="projects-section" id="projects">
   <div class="reveal">
     <div class="section-label">Work</div>
     <h2 class="section-title">Things I've <em>built</em></h2>
   </div>
+
   <div class="projects-grid">
     <div class="project-card reveal">
       <div class="project-num">01 / FEATURED</div>
-      <div class="project-title">End-to-End Data Lakehouse Pipeline</div>
-      <p class="project-desc">Architected a 3-layer Medallion pipeline transforming raw S3 data into curated Gold-layer business views. Engineered secure ingestion via Boto3 and migrated to Delta Lake for ACID transactions and time travel versioning.</p>
+      <div class="project-title">Enterprise Lakehouse Pipeline</div>
+      <p class="project-desc">
+        Built production ETL pipelines ingesting raw AWS S3 data into Databricks Bronze, Silver, and Gold layers and Snowflake reporting environments. Implemented PySpark validation and reconciliation checks to improve data quality across ETL workflows.
+      </p>
       <div class="project-tags">
         <span class="project-tag">Databricks</span>
         <span class="project-tag">PySpark</span>
         <span class="project-tag">AWS S3</span>
         <span class="project-tag">Delta Lake</span>
+        <span class="project-tag">Snowflake</span>
         <span class="project-tag">SQL</span>
-        <span class="project-tag">Boto3</span>
       </div>
     </div>
+
     <div class="project-card reveal">
-      <div class="project-num">02 / RESEARCH</div>
+      <div class="project-num">02 / ANALYTICS</div>
+      <div class="project-title">Snowflake Analytics Platform</div>
+      <p class="project-desc">
+        Designed a cloud-based analytics solution using Snowflake and AWS to transform raw operational datasets into dimensional reporting models supporting business intelligence use cases.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Snowflake</span>
+        <span class="project-tag">AWS</span>
+        <span class="project-tag">Data Warehousing</span>
+        <span class="project-tag">Data Modeling</span>
+        <span class="project-tag">BI Reporting</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">03 / RESEARCH</div>
       <div class="project-title">VessiGuard — Maritime Cyber Defense AI</div>
-      <p class="project-desc">Master's thesis and ICCWS-accepted paper. Developed AI/ML anomaly detection for maritime cyber-physical systems, investigating vulnerabilities in NMEA 2000 vessel communication networks and building threat mitigation strategies.</p>
+      <p class="project-desc">
+        M.S. thesis research focused on AI/ML-based anomaly detection in maritime vessel simulation environments, investigating vulnerabilities in cyber-physical systems and vessel communication networks.
+      </p>
       <div class="project-tags">
         <span class="project-tag">AI / ML</span>
         <span class="project-tag">Cybersecurity</span>
-        <span class="project-tag">NMEA 2000</span>
         <span class="project-tag">Anomaly Detection</span>
-        <span class="project-tag">Published</span>
-      </div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-num">03 / FULLSTACK</div>
-      <div class="project-title">Wayback Public Library App</div>
-      <p class="project-desc">Full-stack library management system built with ReactJS, TypeScript, and Tailwind CSS. Implemented REST API-backed CRUD operations and designed component architecture using SPA patterns with database-driven workflows.</p>
-      <div class="project-tags">
-        <span class="project-tag">ReactJS</span>
-        <span class="project-tag">TypeScript</span>
-        <span class="project-tag">Tailwind CSS</span>
-        <span class="project-tag">REST API</span>
-        <span class="project-tag">SPA</span>
+        <span class="project-tag">NMEA 2000</span>
+        <span class="project-tag">Research</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTS -->
 <section class="certs-section" id="certs">
   <div class="reveal">
     <div class="section-label">Credentials</div>
     <h2 class="section-title">Certifications &amp; <em>learning</em></h2>
   </div>
+
   <div class="certs-grid">
     <div class="cert-card reveal">
-      <div class="cert-icon">🏅</div>
+      <div class="cert-icon">☁️</div>
       <div>
-        <div class="cert-name">Agile Explorer</div>
-        <div class="cert-issuer">IBM</div>
+        <div class="cert-name">AWS Certified Cloud Practitioner</div>
+        <div class="cert-issuer">Amazon Web Services</div>
       </div>
     </div>
-    <div class="cert-card reveal">
-      <div class="cert-icon">🤖</div>
-      <div>
-        <div class="cert-name">AI for Everyone</div>
-        <div class="cert-issuer">DeepLearning.AI</div>
-      </div>
-    </div>
-    <div class="cert-card reveal">
-      <div class="cert-icon">💡</div>
-      <div>
-        <div class="cert-name">Introduction to Artificial Intelligence</div>
-        <div class="cert-issuer">IBM</div>
-      </div>
-    </div>
+
     <div class="cert-card reveal">
       <div class="cert-icon">⚡</div>
       <div>
@@ -961,6 +1217,7 @@
         <div class="cert-issuer">LinkedIn Learning</div>
       </div>
     </div>
+
     <div class="cert-card reveal">
       <div class="cert-icon">🔗</div>
       <div>
@@ -968,6 +1225,7 @@
         <div class="cert-issuer">LinkedIn Learning</div>
       </div>
     </div>
+
     <div class="cert-card reveal">
       <div class="cert-icon">🚀</div>
       <div>
@@ -975,43 +1233,86 @@
         <div class="cert-issuer">LinkedIn Learning</div>
       </div>
     </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Agile Explorer</div>
+        <div class="cert-issuer">IBM</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">🤖</div>
+      <div>
+        <div class="cert-name">AI for Everyone</div>
+        <div class="cert-issuer">DeepLearning.AI</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">💡</div>
+      <div>
+        <div class="cert-name">Introduction to Artificial Intelligence</div>
+        <div class="cert-issuer">IBM</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">📚</div>
+      <div>
+        <div class="cert-name">Preparing for Databricks Data Engineer Associate</div>
+        <div class="cert-issuer">In Progress</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">❄️</div>
+      <div>
+        <div class="cert-name">Preparing for Snowflake SnowPro Core</div>
+        <div class="cert-issuer">In Progress</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="reveal">
     <div class="section-label" style="justify-content:center">Let's connect</div>
-    <h2 class="section-title" style="font-size:clamp(2rem,5vw,3.5rem)">Open to <em>opportunities</em></h2>
-    <p style="color:var(--muted);max-width:480px;margin:1rem auto;font-size:0.95rem;line-height:1.7;">
-      Actively seeking entry-level positions in Software Engineering, Data Engineering, Cloud Infrastructure, or Cybersecurity. OPT status — H1B sponsorship welcome. Based in Indian Land, SC · open to remote.
+    <h2 class="section-title" style="font-size:clamp(2rem,5vw,3.5rem)">Open to <em>Data Engineer roles</em></h2>
+    <p style="color:var(--muted);max-width:560px;margin:1rem auto;font-size:0.95rem;line-height:1.7;">
+      Seeking Data Engineer, Associate Data Engineer, Cloud Data Engineer, Databricks Engineer, and Snowflake Developer opportunities. Based in Indian Land, SC and open to remote or hybrid roles.
     </p>
+
     <a href="mailto:krvravivarma@gmail.com" class="contact-email">krvravivarma@gmail.com</a>
+
     <div class="social-links">
-      <a href="https://github.com/KanVR" target="_blank" class="social-link">⌥ GitHub</a>
+      <a href="https://github.com/KanVR" target="_blank" rel="noopener noreferrer" class="social-link">⌥ GitHub</a>
+      <a href="https://kanvr.github.io/networkwebpage/" target="_blank" rel="noopener noreferrer" class="social-link">⌘ Portfolio</a>
       <a href="mailto:krvravivarma@gmail.com" class="social-link">✉ Email</a>
       <a href="tel:+19104426169" class="social-link">☎ +1 910-442-6169</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span>Ravi Kanumuri</span>
-  <div>Built with precision · Indian Land, SC · <span>2025</span></div>
-  <div>Available for H1B sponsorship</div>
+  <div>Data Engineer · Indian Land, SC · <span>2026</span></div>
+  <div>Databricks · AWS · Snowflake · PySpark</div>
 </footer>
 
 <script>
-  // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
+
   document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
+    mx = e.clientX;
+    my = e.clientY;
     cursor.style.left = mx - 6 + 'px';
     cursor.style.top = my - 6 + 'px';
   });
+
   function animRing() {
     rx += (mx - rx - 18) * 0.12;
     ry += (my - ry - 18) * 0.12;
@@ -1020,12 +1321,18 @@
     requestAnimationFrame(animRing);
   }
   animRing();
+
   document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; ring.style.transform = 'scale(1.5)'; });
-    el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; ring.style.transform = 'scale(1)'; });
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(2)';
+      ring.style.transform = 'scale(1.5)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      ring.style.transform = 'scale(1)';
+    });
   });
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
@@ -1035,23 +1342,41 @@
       }
     });
   }, { threshold: 0.1 });
+
   reveals.forEach(r => observer.observe(r));
 
-  // Typing effect
-  const titles = ['Data Engineer', 'Pipeline Architect', 'Cloud Engineer', 'ML Researcher'];
+  const titles = [
+    'Data Engineer',
+    'Cloud Data Engineer',
+    'Databricks Engineer',
+    'Snowflake Developer',
+    'PySpark Developer'
+  ];
+
   let ti = 0, ci = 0, deleting = false;
   const el = document.querySelector('.typing');
+
   function type() {
     const word = titles[ti];
+
     if (!deleting) {
       el.textContent = word.slice(0, ++ci);
-      if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+      if (ci === word.length) {
+        deleting = true;
+        setTimeout(type, 1800);
+        return;
+      }
     } else {
       el.textContent = word.slice(0, --ci);
-      if (ci === 0) { deleting = false; ti = (ti + 1) % titles.length; }
+      if (ci === 0) {
+        deleting = false;
+        ti = (ti + 1) % titles.length;
+      }
     }
+
     setTimeout(type, deleting ? 60 : 100);
   }
+
   setTimeout(type, 1500);
 </script>
 </body>
